@@ -6,9 +6,9 @@
 <body>
 <?php 
         echo "<h1 id = 'bonjour'> Bonjour " . $_REQUEST['prenom'] . " " . $_REQUEST['nom'] . "</h1>";
-        include_once('test.php');
+        include_once('questions.php');
         $compteur = 1;
-        echo "<form method = 'POST' action=''>";
+        echo "<form method = 'POST' action='traitement.php'>";
         foreach ($questions as $question){
                 echo $question->afficher($compteur);
                 $compteur += 1;
