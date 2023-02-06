@@ -1,3 +1,3 @@
 <?php
-    echo phpinfo(INFO_VARIABLES);
+    echo $_REQUEST['question6']
 ?>

@@ -5,16 +5,17 @@
 </head>
 <body>
 <?php 
-        echo "<h1 id = 'bonjour'> Bonjour " . $_REQUEST['prenom'] . " " . $_REQUEST['nom'] . "</h1>";
+        $affichage = "<h1 id = 'bonjour'> Bonjour " . $_REQUEST['prenom'] . " " . $_REQUEST['nom'] . "</h1>";
         include_once('questions.php');
         $compteur = 1;
-        echo "<form method = 'POST' action='traitement.php'>";
+        $affichage.= "<form method = 'POST' action='traitement.php'>";
         foreach ($questions as $question){
-                echo $question->afficher($compteur);
+                $affichage.= $question->afficher($compteur);
                 $compteur += 1;
         }
-        echo "<input id='button' type='submit' value='Finir le quizz'>";
-        echo "</form>";
+        $affichage.= "<input id='button' type='submit' value='Finir le quizz'>";
+        $affichage.= "</form>";
+        echo $affichage
 ?>
 </body>
 </html>
