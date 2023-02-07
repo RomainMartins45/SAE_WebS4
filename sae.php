@@ -5,7 +5,7 @@
 </head>
 <body>
 <?php 
-        $affichage = "<h1 id = 'bonjour'> Bonjour " . $_REQUEST['prenom'] . " " . $_REQUEST['nom'] . "</h1>";
+        $affichage = "<h1 id = 'bonjour'> Bonjour " . $_REQUEST['pseudo'] . "</h1>";
         include_once('questions.php');
         $compteur = 1;
         $affichage.= "<form method = 'POST' action='traitement.php'>";
