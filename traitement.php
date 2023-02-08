@@ -31,11 +31,11 @@
             }
             }
     }
-        if ($score > $compteur / 2){
-            $affichage .= "<p style = 'color: #06CE59;'> Félicitations, vous finissez donc ce quizz avec un score de " . $score . "/" . $compteur . " !";
+        if ($score >= ($compteur-1) / 2){
+            $affichage .= "<p style = 'color: #06CE59;'> Félicitations, vous finissez donc ce quizz avec un score de " . $score . "/" . $compteur - 1 . " !";
         }
         else{
-            $affichage .= "<p style = 'color: #D23014;'> Dommage, vous finissez donc ce quizz avec un score de " . $score . "/" . $compteur . " !";
+            $affichage .= "<p style = 'color: #D23014;'> Dommage, vous finissez donc ce quizz avec un score de " . $score . "/" . $compteur - 1 . " !";
         }
         $affichage.= "</form>";
         echo $affichage

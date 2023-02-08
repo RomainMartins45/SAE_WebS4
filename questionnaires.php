@@ -16,7 +16,8 @@
                 $affichage .= $questionnaires->afficher();
         }
         $affichage .= "</div>";
-        echo $affichage
+
+        echo $affichage;
 ?>
 </body>
 </html>
