@@ -1,4 +1,30 @@
 <?php 
+
+        class Questionnaire{
+            private $id;
+            private $titre;
+            private $listeQuestions;
+
+            public function __construct($id,$titre,$liste){
+                $this->id = $id;
+                $this->titre = $titre;
+                $this->listeQuestions = $liste;
+            }
+
+            public function getQuestions(){
+                return $this->listeQuestions;
+            }
+
+            public function getId(){
+                return $this->id;
+            }
+
+            public function afficher(){
+                $output = "<a href = 'question.php?id=" . $this->id . "'> <div class = 'questionnaire'>" . $this->titre . "</div></a>";
+                return $output;
+            }
+        }
+
         class QuestionAChoixMultiple {
             private $question;
             private $choix;
@@ -167,8 +193,19 @@
         $question3 = new QuestionNumerique("Combien de ballons d'or possède Messi ?",7,1);
         $question4 = new QuestionAChoixMultiple("Quel est la capital de la France ?", array("Paris", "Marseille", "Lille", "Lyon"), "Paris");
         $question5 = new QuestionTexte("Qui a été le MVP du segment de printemps de LEC 2022 ?", "Vetheo");
-        $question6 = new QuestionVraiFaux("Est ce que Ronaldo est le milleur joueur du monde ?", "VRAI");
+        $question6 = new QuestionVraiFaux("Est ce que Ronaldo est le meilleur joueur du monde ?", "VRAI");
+        $question7 = new QuestionVraiFaux("Est ce que Messi est le meilleur joueur du monde ?", "FAUX");
         $questions = array($question1,$question2,$question3,$question4,$question5,$question6);
+        $questions2 = array($question7,$question2,$question3,$question4,$question5,$question6);
+        $questionnaire = new Questionnaire(1,"Questinnaire n1",$questions);
+        $questionnaire2 = new Questionnaire(2,"Questinnaire n2",$questions2);
+        $questionnaire3 = new Questionnaire(3,"Questinnaire n2",$questions);
+        $questionnaire4 = new Questionnaire(4,"Questinnaire n2",$questions);
+        $questionnaire5 = new Questionnaire(5,"Questinnaire n2",$questions);
+        $questionnaire6 = new Questionnaire(6,"Questinnaire n2",$questions);
+        $questionnaire7 = new Questionnaire(7,"Questinnaire n2",$questions);
+        $questionnaire8 = new Questionnaire(8,"Questinnaire n2",$questions);
+        $listeQuestionnaires = array($questionnaire,$questionnaire2,$questionnaire3,$questionnaire4,$questionnaire5,$questionnaire6,$questionnaire7,$questionnaire8);
     ?>
 
 
