@@ -24,7 +24,7 @@
             }
 
             public function afficher(){
-                $output = "<a href = 'question.php?id=" . $this->id . "'> <div class = 'questionnaire'>" . $this->titre . "</div></a>";
+                $output = "<a href = 'question.php?id=" . $this->id . "'> <div class = 'questionnaire'>" . $this->id . " " .  $this->titre .  "</div></a>";
                 return $output;
             }
         }
@@ -224,6 +224,13 @@
                         $choixTexte = $rowC['choix'];
                     }
                     array_push($listeQuestions,new QuestionVraiFaux($rowQ['texte'],$choixTexte));
+                }
+                else if($rowQ['type'] == "numerique"){
+                    $stmtChoix = $connexion->query("SELECT * FROM choixQuestions where question_id = " . $rowQ['id']);
+                    while($rowC = $stmtChoix->fetch()){
+                        $choixTexte = $rowC['choix'];
+                    }
+                    array_push($listeQuestions,new QuestionNumerique($rowQ['texte'],$choixTexte));
                 }
             }   
 

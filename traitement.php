@@ -12,6 +12,11 @@
 </body>
 </html>
 <?php 
+        session_start();
+        if (!isset($_SESSION['score' . $_GET['id']])) {
+            $_SESSION['score' . $_GET['id']] = 0;
+        }
+
         include_once('questions.php');
         $compteur = 1;
         $affichage= "<form>";
@@ -31,6 +36,11 @@
             }
             }
     }
+    if($score > $_SESSION['score' . $_GET['id']]){
+        $_SESSION['score' . $_GET['id']] = $score;
+    }
+    $_SESSION['dernierScore' . $_GET['id']] = $score;
+    
         if ($score >= ($compteur-1) / 2){
             $affichage .= "<p style = 'color: #06CE59;'> Félicitations, vous finissez donc ce quizz avec un score de " . $score . "/" . $compteur - 1 . " !";
         }
@@ -38,5 +48,14 @@
             $affichage .= "<p style = 'color: #D23014;'> Dommage, vous finissez donc ce quizz avec un score de " . $score . "/" . $compteur - 1 . " !";
         }
         $affichage.= "</form>";
-        echo $affichage
+        echo $affichage;
+
+        $bouton = "<button><a href = questionnaires.php>Retourner aux questionnaires</a></button>";
+        
+        echo $bouton;
+
+        echo "<p>Votre score meilleur score est : ".$_SESSION['score' . $_GET['id']] . "</p>";
+        echo "Votre dernier score est : ".$_SESSION['dernierScore' . $_GET['id']];
+
+
 ?>

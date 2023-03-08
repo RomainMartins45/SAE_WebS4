@@ -9,7 +9,12 @@
 </head>
 <body>
 <?php 
-        $affichage = "<h1 id = 'bonjour'> Bonjour " . $_REQUEST['pseudo'] . "</h1>";
+        session_start();
+        if (!isset($_SESSION['pseudo'])) {
+                $_SESSION['pseudo'] = $_REQUEST['pseudo'];
+            }
+
+        $affichage = "<h1 id = 'bonjour'> Bonjour " . $_SESSION['pseudo'] . "</h1>";
         include_once('questions.php');
         $affichage .= "<div id = 'fond'>";
         foreach ($listeQuestionnaires as $questionnaires){
@@ -18,6 +23,12 @@
         $affichage .= "</div>";
 
         echo $affichage;
+
+        $ajouterQuestionnaire = "<form method = 'POST' action = 'ajouterQuestionnaire.html'>";
+        $ajouterQuestionnaire .= "<input id='button' type='submit' value='Ajouter un questionnaire'></input>";
+        $ajouterQuestionnaire .= "</form>";
+        echo $ajouterQuestionnaire
+
 ?>
 </body>
 </html>
