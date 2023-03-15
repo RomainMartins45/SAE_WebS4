@@ -48,10 +48,12 @@
             'juste' => true,
             'type' => 'texte'
           );
-          
- 
-        $json = json_encode($data);
-        file_put_contents('question.json', $json);
+          $json = file_get_contents('question.json');
+          $jsonArray = json_decode($json, true);
+          $jsonArray[] = $data;
+          $json = json_encode($jsonArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        
+          file_put_contents('question.json', $json);
 
         header("Location: choixTypeQuestion.php?id=" . $_REQUEST['id']);
         exit;
@@ -85,9 +87,12 @@
           );
           
  
-        $json = json_encode($data);
+          $json = file_get_contents('question.json');
+          $jsonArray = json_decode($json, true);
+          $jsonArray[] = $data;
+          $json = json_encode($jsonArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        
         file_put_contents('question.json', $json);
-
         header("Location: choixTypeQuestion.php?id=" . $_REQUEST['id']);
         exit;
     }
@@ -120,13 +125,23 @@
           );
           
  
-        $json = json_encode($data);
-        file_put_contents('question.json', $json);
+          $json = file_get_contents('question.json');
+          $jsonArray = json_decode($json, true);
+          $jsonArray[] = $data;
+          $json = json_encode($jsonArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        
+          file_put_contents('question.json', $json);
 
         header("Location: choixTypeQuestion.php?id=" . $_REQUEST['id']);
         exit;
     }
     else if($_REQUEST['typeQuestion'] == 'qcm'){
+
+        if (!(in_array($_REQUEST['reponseQCM'], $_REQUEST['choix']))){
+            header("Location: ajoutQuestion.php?id=" . $_REQUEST['id'] . "&typeQuestion=" . $_REQUEST['typeQuestion']);
+            exit();
+        }
+
         $maxID = $connexion->prepare("SELECT MAX(id) AS max_id FROM questions");
         $maxID->execute();
         $result = $maxID->fetch(PDO::FETCH_ASSOC);
@@ -141,7 +156,7 @@
         $maxID->execute();
         $result = $maxID->fetch(PDO::FETCH_ASSOC);
     
-        $idMax = $result['max_id'] +1;
+        $idMax = $result['max_id'] + 1;
         foreach($_REQUEST['choix'] as $choix){
             $choixA = "INSERT INTO choixQuestions (id , question_id,choix,juste) VALUES (?, ?, ?, ?)";
             $ajoutChoix = $connexion->prepare($choixA);
@@ -158,8 +173,12 @@
                   );
                   
          
-                $json = json_encode($data);
-                file_put_contents('question.json', $json);
+                  $json = file_get_contents('question.json');
+                  $jsonArray = json_decode($json, true);
+                  $jsonArray[] = $data;
+                  $json = json_encode($jsonArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                
+                  file_put_contents('question.json', $json);
 
             }
             else{
@@ -175,7 +194,11 @@
                   );
                   
          
-                $json = json_encode($data);
+                $json = file_get_contents('question.json');
+                $jsonArray = json_decode($json, true);
+                $jsonArray[] = $data;
+                $json = json_encode($jsonArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+              
                 file_put_contents('question.json', $json);
 
             }

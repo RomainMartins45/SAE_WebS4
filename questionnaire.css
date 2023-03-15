@@ -33,3 +33,17 @@ a{
     text-decoration:none;
     text-align: center;
 }
+
+#button {
+  background-color: #4CAF50; /* couleur de fond */
+  border: none; /* pas de bordure */
+  color: white; /* couleur du texte */
+  padding: 15px 32px; /* espace autour du texte */
+  text-align: center; /* centrer le texte */
+  text-decoration: none; /* pas de soulignement */
+  display: inline-block; /* afficher comme un bloc */
+  font-size: 16px; /* taille de police */
+  margin: 10px 0; /* marge autour du bouton */
+  cursor: pointer; /* curseur de souris en forme de main */
+  border-radius: 5px; /* coins arrondis */
+}

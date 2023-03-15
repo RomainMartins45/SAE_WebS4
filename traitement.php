@@ -12,6 +12,8 @@
 </body>
 </html>
 <?php 
+
+
         session_start();
         if (!isset($_SESSION['score' . $_GET['id']])) {
             $_SESSION['score' . $_GET['id']] = 0;
@@ -36,6 +38,10 @@
             }
             }
     }
+    if($compteur == 1){
+        echo $compteur;
+        header("Location: question.php?id=" . $_GET['id']);
+    }
     if($score > $_SESSION['score' . $_GET['id']]){
         $_SESSION['score' . $_GET['id']] = $score;
     }
@@ -54,8 +60,9 @@
         
         echo $bouton;
 
+        echo "<div id = score>";
         echo "<p>Votre score meilleur score est : ".$_SESSION['score' . $_GET['id']] . "</p>";
-        echo "Votre dernier score est : ".$_SESSION['dernierScore' . $_GET['id']];
-
+        echo "<p>Votre dernier score est : ".$_SESSION['dernierScore' . $_GET['id']] . "</p>";
+        echo "</div>";
 
 ?>

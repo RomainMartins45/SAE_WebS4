@@ -84,3 +84,12 @@ form {
   .home-link:hover {
     background-color: #444;
   }
+
+  #score {
+    position: fixed; /* fixer la position */
+    top: 0; /* placer en haut de la page */
+    left: 0; /* placer à gauche */
+    padding: 10px; /* espace intérieur */
+    font-size: 16px; /* taille de police */
+    font-weight: bold; /* texte en gras */
+  }

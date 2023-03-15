@@ -20,8 +20,8 @@
 </html>
 <?php 
 
-    if ($_POST['typeQuestion'] == 'vraiFaux'){
-        $ajouterQuestion = "<form method='POST' action='ajouterQuestion.php?id=" . $_GET['id'] . "&typeQuestion=" . $_POST['typeQuestion'] . "&nomQuestion=" . $_REQUEST['nomQuestion'] . "'>";
+    if ($_REQUEST['typeQuestion'] == 'vraiFaux'){
+        $ajouterQuestion = "<form method='POST' action='ajouterQuestion.php?id=" . $_GET['id'] . "&typeQuestion=" . $_REQUEST['typeQuestion'] . "&nomQuestion=" . $_REQUEST['nomQuestion'] . "'>";
         $ajouterQuestion .= "<label> Réponse <label>";
         $ajouterQuestion .= "<select name='reponseVraiFaux'>
                                 <option value='VRAI'>Vrai</option>
@@ -31,8 +31,8 @@
         $ajouterQuestion .= "</form>";
         echo $ajouterQuestion;
     }
-    else if ($_POST['typeQuestion'] == 'qcm'){
-        $ajouterQuestion = "<form method='POST' action='ajouterQuestion.php?id=" . $_GET['id'] . "&typeQuestion=" . $_POST['typeQuestion'] . "&nomQuestion=" . $_REQUEST['nomQuestion'] . "'>";
+    else if ($_REQUEST['typeQuestion'] == 'qcm'){
+        $ajouterQuestion = "<form method='POST' action='ajouterQuestion.php?id=" . $_GET['id'] . "&typeQuestion=" . $_REQUEST['typeQuestion'] . "&nomQuestion=" . $_REQUEST['nomQuestion'] . "'>";
         $ajouterQuestion .=     "<div>
                             <label>Choix de réponse</label>
                             <input type='text' name='choix[]' required>
@@ -46,18 +46,18 @@
         echo $ajouterQuestion;
     }
 
-    else if($_POST['typeQuestion'] == 'texte'){
-        $ajouterQuestion = "<form method='POST' action='ajouterQuestion.php?id=" . $_GET['id'] . "&typeQuestion=" . $_POST['typeQuestion'] . "&nomQuestion=" . $_REQUEST['nomQuestion'] . "'>";
+    else if($_REQUEST['typeQuestion'] == 'texte'){
+        $ajouterQuestion = "<form method='POST' action='ajouterQuestion.php?id=" . $_GET['id'] . "&typeQuestion=" . $_REQUEST['typeQuestion'] . "&nomQuestion=" . $_REQUEST['nomQuestion'] . "'>";
         $ajouterQuestion .= "<label> Réponse <label>";
         $ajouterQuestion .= "<input type='text' name='reponseTexte' required>";
         $ajouterQuestion .= "<input type='submit' value='Ajouter la question'>";
         $ajouterQuestion .= "</form>";
         echo $ajouterQuestion;
     }
-    else if($_POST['typeQuestion'] == 'numerique'){
-        $ajouterQuestion = "<form method='POST' action='ajouterQuestion.php?id=" . $_GET['id'] . "&typeQuestion=" . $_POST['typeQuestion'] . "&nomQuestion=" . $_REQUEST['nomQuestion'] . "'>";
+    else if($_REQUEST['typeQuestion'] == 'numerique'){
+        $ajouterQuestion = "<form method='POST' action='ajouterQuestion.php?id=" . $_GET['id'] . "&typeQuestion=" . $_REQUEST['typeQuestion'] . "&nomQuestion=" . $_REQUEST['nomQuestion'] . "'>";
         $ajouterQuestion .= "<label> Réponse <label>";
-        $ajouterQuestion .= "<input type='text' name='reponseNumerique' required>";
+        $ajouterQuestion .= "<input type='number' name='reponseNumerique' required>";
         $ajouterQuestion .= "<input type='submit' value='Ajouter la question'>";
         $ajouterQuestion .= "</form>";
         echo $ajouterQuestion;

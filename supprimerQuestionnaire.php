@@ -15,5 +15,6 @@
         $sup = "DELETE FROM questionnaires where id = ?";
         $supprimerQuestionnaire = $connexion->prepare($sup);
         $supprimerQuestionnaire ->execute([$_GET['id']]);
+
         header('Location: questionnaires.php');
 ?>

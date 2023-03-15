@@ -23,19 +23,18 @@
         $sql = "INSERT INTO questionnaires (id, titre, utilisateur_id) VALUES (?, ?, ?)";
         $ajoutQuestionnaire = $connexion->prepare($sql);
         $ajoutQuestionnaire->execute([$idMax + 1, $_POST['nomQuestionnaire'], 1]);
-
-        $data = array(
-            'id' => $idMax + 1,
-            'titre' => $_POST['nomQuestionnaire'],
-            'utilisateur_id' => 1
-          );
           
- 
-        $json = json_encode($data);
+        // Récupérer les données JSON actuelles du fichier
+          $json = file_get_contents('questionnaire.json');
+          $data = array('id' => $idMax + 1, 'titre' => $_POST['nomQuestionnaire'], 'utilisateur_id' => 1);
+
+          // Ajouter les nouvelles données JSON
+          $jsonArray = json_decode($json, true);
+          $jsonArray[] = $data;
+          $json = json_encode($jsonArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
         file_put_contents('questionnaire.json', $json);
           
-
-        
         header("Location: questionnaires.php");
         exit;
 
